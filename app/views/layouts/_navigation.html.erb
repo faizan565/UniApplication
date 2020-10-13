@@ -1,0 +1,42 @@
+<header>
+
+  <nav>
+    <div class="nav-wrapper">
+      <div class="container">
+        <%= link_to 'UNIVERSITY', root_path, class: "brand-logo" %>
+
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+
+          <li><%= link_to 'Courses', root_path %></li>
+          <% if logged_in? %>
+          <li><%= link_to 'Students', students_path %></li>
+            <li><%= link_to "Profile", student_path(current_user) %></li>
+          <% else %>
+          <li><%= link_to 'Sign Up', new_student_path %></li>
+          <% end %>
+
+          <li><%= session_link %></li>
+
+
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+<% flash.each do |key, message| %>>
+  <div class="container">
+    <div class="row sign_up_form">
+      <div class="col s12 m12 l12">
+        <div class="card-panel red lighten" id="fade_out_target">
+          <span class="white-text">
+            <%= message %>
+              </span>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+</header>
